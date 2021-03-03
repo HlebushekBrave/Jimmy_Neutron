@@ -1,34 +1,36 @@
 import urllib.request
-url = 'https://www.nfl.com/players/bryce-petty/stats/'
-f = urllib.request.urlopen(url)
-s = f.read()
-text = str(s)
-part_name = text.find("nfl-c-player-header__title")
-name = text[text.find('>', part_name)+1:text.find('</h1', part_name)]
-passing_completions = text.find("passingCompletions")
-comp = text[text.find('>', passing_completions)+25:text.find('</th', passing_completions)]
-comp = comp.replace(' ', '')
-comp = (int(comp[:-2]))
-passing_attempts = text.find("passingAttempts")
-att = text[text.find('>', passing_attempts)+25:text.find('</th', passing_attempts)]
-att = att.replace(' ', '')
-att = (int(att[:-2]))
-passing_yards = text.find("passingYards")
-yds = text[text.find('>', passing_yards)+25:text.find('</th', passing_yards)]
-yds = yds.replace(' ', '')
-yds = (int(yds[:-2]))
-passing_touchdowns = text.find("passingTouchdowns")
-td = text[text.find('>', passing_touchdowns)+25:text.find('</th', passing_touchdowns)]
-td = td.replace(' ', '')
-td = (int(td[:-2]))
-passing_interceptions = text.find("passingInterceptions")
-int1 = text[text.find('>', passing_interceptions)+25:text.find('</th', passing_interceptions)]
-int1 = int1.replace(' ', '')
-int1 = (int(int1[:-2]))
-passing_rating = text.find("passingPasserRating")
-pr = text[text.find('>', passing_rating)+25:text.find('</th', passing_rating)]
-pr = pr.replace(' ', '')
-pr = (float(pr[:-2]))
-pr = ('%.2f' % pr)
-print('{:<20}'.format(name), '{:<7}'.format(comp), '{:<7}'.format(att),
-      '{:<7}'.format(yds), '{:<7}'.format(td), '{:<7}'.format(int1), '{:<7}'.format(pr))
+for i in range(0,21):
+    with open("input.txt", "r") as f:
+        text = f.readlines()
+    url = text[i]
+    f = urllib.request.urlopen(url)
+    s = f.read()
+    text = str(s)
+    part_name = text.find("nfl-c-player-header__title")
+    name = text[text.find('>', part_name)+1:text.find('</h1', part_name)]
+    passing_completions = text.find("passingCompletions")
+    comp = text[text.find('>', passing_completions)+25:text.find('</th', passing_completions)]
+    comp = comp.replace(' ', '')
+    comp = (int(comp[:-2]))
+    passing_attempts = text.find("passingAttempts")
+    att = text[text.find('>', passing_attempts)+25:text.find('</th', passing_attempts)]
+    att = att.replace(' ', '')
+    att = (int(att[:-2]))
+    passing_yards = text.find("passingYards")
+    yds = text[text.find('>', passing_yards)+25:text.find('</th', passing_yards)]
+    yds = yds.replace(' ', '')
+    yds = (int(yds[:-2]))
+    passing_touchdowns = text.find("passingTouchdowns")
+    td = text[text.find('>', passing_touchdowns)+25:text.find('</th', passing_touchdowns)]
+    td = td.replace(' ', '')
+    td = (int(td[:-2]))
+    passing_interceptions = text.find("passingInterceptions")
+    int1 = text[text.find('>', passing_interceptions)+25:text.find('</th', passing_interceptions)]
+    int1 = int1.replace(' ', '')
+    int1 = (int(int1[:-2]))
+    passing_rating = text.find("passingPasserRating")
+    pr = text[text.find('>', passing_rating)+25:text.find('</th', passing_rating)]
+    pr = pr.replace(' ', '')
+    pr = (float(pr[:-2]))
+    pr = ('%.2f' % pr)
+    print('{:<20}'.format(name), '{:<7}'.format(comp), '{:<7}'.format(att), '{:<7}'.format(yds), '{:<7}'.format(td), '{:<7}'.format(int1), '{:<7}'.format(pr))
