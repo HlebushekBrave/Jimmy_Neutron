@@ -1,3 +1,7 @@
+#Case-study 5
+#Adristi Fauzi 40%
+#Raspopova Alexandra 40%
+#Belozertseva Maria 60%
 import urllib.request
 for i in range(0,21):
     with open("input.txt", "r") as f:
