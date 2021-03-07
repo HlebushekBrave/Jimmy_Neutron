@@ -38,4 +38,3 @@ for i in range(0,21):
     pr = (float(pr[:-2]))
     pr = ('%.2f' % pr)
     print('{:<20}'.format(name), '{:<7}'.format(comp), '{:<7}'.format(att), '{:<7}'.format(yds), '{:<7}'.format(td), '{:<7}'.format(int1), '{:<7}'.format(pr))
-
